@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Yeseva+One&display=swap');
+
+.yeseva-one-regular {
+  font-family: "Yeseva One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ibm-plex-serif-regular {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* --- RESET E BASE (Celulares até 400px) --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #111;
+  font-size: 14px; /* Base menor para telas < 400px */
+}
+
+#root {
+  background: rgb(28, 28, 28);
+  min-height: 100vh;
+  width: 100%;
+  /* Aumentamos o max-width para que ele possa crescer no notebook */
+  max-width: 1300px; 
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  background: #ff3bd4;
+  color: #fff;
+  padding: 15px; /* Padding reduzido para mobile pequeno */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.392);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo-icon {
+  border: 2px solid #fff;
+  border-radius: 6px;
+  padding: 3px 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  font-family: IBM Plex Serif ;
+}
+
+.logo-text {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  font-family: IBM Plex Serif;
+}
+
+.menu-btn {
+  background-color: transparent; /* Melhor prática */
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+.menu-btn:focus{
+  outline: none;
+}
+
+/* Main */
+.main {
+  padding: 12px;
+}
+
+.top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-top: 10px;
+  margin-left: 10px;
+}
+
+.top-section h1 {
+  /* Tamanho dinâmico seguro para telas estreitas */
+  font-size: clamp(1.2rem, 4vw, 1.1rem);
+  font-weight: normal;
+  color: white;
+}
+
+.top-section strong {
+  color: #ff3bd4;
+  font-family: Yeseva One;
+}
+
+/* Products - CONFIGURAÇÃO DE 2 COLUNAS */
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 Colunas Fixas */
+  gap: 10px; /* Gap menor para telas < 400px */
+
+  display: grid;
+  /* minmax(160px, 1fr) significa: 
+     O produto tem no mínimo 160px. 
+     Se couberem três de 160px, ele cria 3 colunas. 
+     Se couberem quatro, ele cria 4 colunas.
+     O '1fr' garante que eles preencham o resto do espaço sobrando.
+  */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.product-card {
+  background: #f5f5f5;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  /* Garante que o card não fique "infinito" em altura */
+  height: 100%;
+  transition: transform 0.2s ease; /* Transição suave */
+}
+.product-card:hover{
+  transform: scale(1.02); /* Aumenta 5% no hover */
+}
+
+.content-card{
+  padding: 0 10px 10px;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #ddd;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 8px;
+  object-fit: cover;
+}
+
+.product-name {
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 4px;
+  /* Trunca texto longo em 2 linhas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-price {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ff3bd4;
+  margin-top: auto; /* Empurra o preço para baixo se o nome for curto */
+}
+
+.section-solucao{
+  margin: auto;
+  text-align: center;
+  max-width: 450px;
+}
+
+.btn-contato{
+  box-sizing: border-box;
+  width: 90%;
+  background-color: rgb(0, 167, 0);
+  font-size: 1rem;
+  margin-top: 10px;
+}
+.btn-contato:hover{
+  border-color: white;
+}
+.logo-whatsapp{
+  height: 30px;
+  width: 30px;
+}
+
+.btn-contato section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.section-quem-somos{
+  margin: 40px 0;
+}
+
+/* --- Media Queries para Notebooks (ajuste de conforto) --- */
+@media (min-width: 850px) {
+  .products {
+    /* No notebook, podemos aumentar a largura mínima para 200px 
+       para os produtos ficarem mais detalhados */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .logo-text{
+    font-size: 1.5em;
+  }
+
+  .header{
+    padding: 20px;
+  }
+
+  .top-section h1{
+    font-size: 23px;
+  }
+  
+  .section-solucao{
+    text-align: center;
+  }
+
+  .btn-contato{
+  box-sizing: border-box;
+  width: 90%;
+  background-color: rgb(0, 167, 0);
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+}
