@@ -1,4 +1,4 @@
-### 📦 Catálogo Online
+## 📦 Catálogo Online
 
 Projeto de um catálogo online de produtos, desenvolvido inicialmente com foco no frontend, mas estruturado e planejado para evoluir para uma aplicação full stack.
 
